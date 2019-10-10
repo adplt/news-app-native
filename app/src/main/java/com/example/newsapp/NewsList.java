@@ -2,6 +2,8 @@ package com.example.newsapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,17 +17,20 @@ import adapter.NewsAdapter;
 import apis.NewsListApi;
 import model.NewsModel;
 import utils.Middleware;
+import utils.Storage;
 
-public class NewsList extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class NewsList extends AppCompatActivity {
 
-    private Middleware middleware = new Middleware();
     private ListView list_view;
+    private Storage storage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_list);
         list_view = findViewById(R.id.news_list);
+
+        storage = new Storage(NewsList.this);
         getView();
     }
 
@@ -44,7 +49,8 @@ public class NewsList extends AppCompatActivity implements NavigationView.OnNavi
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     NewsModel news = (NewsModel) list_view.getAdapter().getItem(position);
-                    // startActivity(new Intent(Absence.this, AbsenceDetail.class));
+                    storage.setNews(news);
+                    startActivity(new Intent(NewsList.this, NewsDetail.class));
                 }
             });
 
@@ -55,10 +61,5 @@ public class NewsList extends AppCompatActivity implements NavigationView.OnNavi
                 }
             });
         }
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        return false;
     }
 }

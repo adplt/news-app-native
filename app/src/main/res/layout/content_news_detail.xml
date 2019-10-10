@@ -5,15 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".NewsList"
+    tools:context=".NewsDetail"
     tools:showIn="@layout/app_bar_news_list"
-    android:id="@+id/refresh_1">
+    android:id="@+id/refresh_2">
 
-    <ListView
+    <WebView
+        android:id="@+id/news_detail"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/news_list"
-        android:longClickable="false"
-        android:listSelector="@android:color/transparent" />
+        android:layout_height="match_parent" />
 
 </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
