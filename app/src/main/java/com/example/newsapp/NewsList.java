@@ -2,9 +2,9 @@ package com.example.newsapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,6 +12,9 @@ import android.widget.ListView;
 import com.google.android.material.navigation.NavigationView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
+import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
+
 import java.util.List;
 import adapter.NewsAdapter;
 import apis.NewsListApi;
@@ -23,6 +26,7 @@ public class NewsList extends AppCompatActivity {
 
     private ListView list_view;
     private Storage storage;
+    private SwipyRefreshLayout srl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,33 @@ public class NewsList extends AppCompatActivity {
 
         storage = new Storage(NewsList.this);
         getView();
+
+        srl = findViewById(R.id.refresh);
+        srl.setOnRefreshListener(new SwipyRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh(SwipyRefreshLayoutDirection direction) {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        try{
+                            getView();
+                        }catch(Exception e){
+
+                        }
+                        srl.setRefreshing(false);
+                    }
+                }, 5000);
+            }
+        });
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                srl.setRefreshing(true);
+                getView();
+                srl.setRefreshing(false);
+            }
+        }, 5000);
     }
 
     public void getView() {
