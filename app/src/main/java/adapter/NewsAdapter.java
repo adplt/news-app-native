@@ -36,7 +36,7 @@ public class NewsAdapter extends ArrayAdapter<NewsModel> {
         TextView desc = convertView.findViewById(R.id.desc);
 
         CircularImageView civ = convertView.findViewById(R.id.news_image);
-        pb = (ProgressBar) convertView.findViewById(R.id.pg);
+        pb = convertView.findViewById(R.id.pg);
 
         title.setText(news_list.get(position).getTitle());
         url.setText(news_list.get(position).getUrl());
