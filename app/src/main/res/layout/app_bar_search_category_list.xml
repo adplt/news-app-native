@@ -6,8 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewsDetail"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".SearchCategoryList">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_1"
@@ -22,19 +22,20 @@
         <TextView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:id="@+id/close_web_view"
+            android:id="@+id/back_button"
             android:background="@mipmap/ic_launcher"
             android:layout_marginRight="5dp"
             android:layout_alignRight="@+id/title"
             android:layout_marginBottom="10dp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:typeface="serif"
-            android:textSize="20sp"
             android:textColor="#FFFFFF"
-            android:text="News Detail"
+            android:text="Search Category"
+            android:paddingRight="200dp"
             android:layout_marginLeft="30dp"/>
 
     </androidx.appcompat.widget.Toolbar>
@@ -42,13 +43,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:theme="@style/AppTheme.NoActionBar.AppBarOverlay"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
-        <include layout="@layout/content_news_detail" />
+        <include layout="@layout/content_search_category_list" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

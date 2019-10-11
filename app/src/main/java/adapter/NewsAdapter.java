@@ -15,19 +15,21 @@ import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import java.util.List;
 import model.NewsModel;
+import variables.CommonVariable;
 
 public class NewsAdapter extends ArrayAdapter<NewsModel> {
 
-    private List<NewsModel> news_list;
+    private List<NewsModel> newsList;
     private LayoutInflater li;
     private ProgressBar pb;
 
-    public NewsAdapter(Context context, int resource, List<NewsModel> news_list){
-        super(context, resource, news_list);
-        this.news_list=news_list;
+    public NewsAdapter(Context context, int resource, List<NewsModel> newsList){
+        super(context, resource, newsList);
+        this.newsList=newsList;
         li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+    @Override
     public View getView(int position, View convertView, ViewGroup parent){
         convertView=li.inflate(R.layout.interface_news_list,null);
 
@@ -38,13 +40,12 @@ public class NewsAdapter extends ArrayAdapter<NewsModel> {
         CircularImageView civ = convertView.findViewById(R.id.news_image);
         pb = convertView.findViewById(R.id.pg);
 
-        title.setText(news_list.get(position).getTitle());
-        url.setText(news_list.get(position).getUrl());
-        desc.setText(news_list.get(position).getDescription());
+        title.setText(newsList.get(position).getTitle());
+        url.setText(newsList.get(position).getUrl());
+        desc.setText(newsList.get(position).getDescription());
 
-        String urlImage;
-        if (news_list.get(position).getDescription() == null) urlImage = "//mipmap:" + R.mipmap.ic_launcher;
-        else urlImage = news_list.get(position).getUrlToImage();
+        String urlImage = CommonVariable.DEFAULT_IMAGE;
+        if (!newsList.get(position).getUrlToImage().equalsIgnoreCase("null")) urlImage = newsList.get(position).getUrlToImage();
 
         ImageLoader.getInstance().displayImage(urlImage, civ, new ImageLoadingListener() {
 

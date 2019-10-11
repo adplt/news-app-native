@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:showIn="@layout/app_bar_news_detail"
-    tools:context=".NewsDetail">
+    tools:showIn="@layout/app_bar_search_category_list"
+    tools:context=".SearchCategoryList"
+    android:orientation="vertical">
 
-    <WebView
-        android:id="@+id/news_detail"
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:id="@+id/category_list"
+        android:longClickable="false"
+        android:listSelector="@android:color/transparent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

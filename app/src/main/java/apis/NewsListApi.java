@@ -1,7 +1,5 @@
 package apis;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.ArrayList;
@@ -39,7 +37,7 @@ public class NewsListApi extends HTTP {
                     news.setID(i);
                     SourceModel source = new SourceModel();
                     source.setID(field.getJSONObject("source").getString("id"));
-                    source.setID(field.getJSONObject("source").getString("name"));
+                    source.setName(field.getJSONObject("source").getString("name"));
                     news.setSource(source);
                     news.setAuthor(field.getString("author"));
                     news.setTitle(field.getString("title"));

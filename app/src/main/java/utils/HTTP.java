@@ -31,37 +31,37 @@ public class HTTP {
             connect.addRequestProperty("Accept-Language", "en-US,en;q=0.8");
             connect.addRequestProperty("User-Agent", "Mozilla");
 
-//            StringBuilder builder = new StringBuilder();
-//            builder.append(connect.getResponseCode())
-//                    .append(" ")
-//                    .append(connect.getResponseMessage())
-//                    .append(" ")
-//                    .append(connect.getURL())
-//                    .append("\n");
-//
-//            Map<String, List<String>> map = connect.getHeaderFields();
-//            for (Map.Entry<String, List<String>> entry : map.entrySet())
-//            {
-//                if (entry.getKey() == null)
-//                    continue;
-//                builder.append( entry.getKey())
-//                        .append(": ");
-//
-//                List<String> headerValues = entry.getValue();
-//                Iterator<String> it = headerValues.iterator();
-//                if (it.hasNext()) {
-//                    builder.append(it.next());
-//
-//                    while (it.hasNext()) {
-//                        builder.append(", ")
-//                                .append(it.next());
-//                    }
-//                }
-//
-//                builder.append("\n");
-//            }
-//
-//            Log.e("Punya Atria: ", String.valueOf(builder));
+            StringBuilder builder = new StringBuilder();
+            builder.append(connect.getResponseCode())
+                    .append(" ")
+                    .append(connect.getResponseMessage())
+                    .append(" ")
+                    .append(connect.getURL())
+                    .append("\n");
+
+            Map<String, List<String>> map = connect.getHeaderFields();
+            for (Map.Entry<String, List<String>> entry : map.entrySet())
+            {
+                if (entry.getKey() == null)
+                    continue;
+                builder.append( entry.getKey())
+                        .append(": ");
+
+                List<String> headerValues = entry.getValue();
+                Iterator<String> it = headerValues.iterator();
+                if (it.hasNext()) {
+                    builder.append(it.next());
+
+                    while (it.hasNext()) {
+                        builder.append(", ")
+                                .append(it.next());
+                    }
+                }
+
+                builder.append("\n");
+            }
+
+            Log.e("Punya Atria: ", String.valueOf(builder));
 
             if(connect.getInputStream() != null) {
                 //mengambil response

@@ -26,6 +26,14 @@
             android:name=".NewsDetail"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".SearchSourceList"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SearchCategoryList"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
