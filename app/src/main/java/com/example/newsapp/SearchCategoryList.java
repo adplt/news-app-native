@@ -2,6 +2,7 @@ package com.example.newsapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -44,7 +45,7 @@ public class SearchCategoryList extends AppCompatActivity {
         SourceListApi sourceApi = new SourceListApi();
         List<SourceModel> sourceList = sourceApi.getSourceList("/sources", "");
 
-        sourceList = transformer.filterCategory(sourceList);
+        // sourceList = transformer.filterCategory(sourceList);
 
         if(sourceList != null){
             CategoryAdapter categoryAdapter = new CategoryAdapter(SearchCategoryList.this, R.layout.interface_category_list, sourceList);

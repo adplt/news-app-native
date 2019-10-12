@@ -25,7 +25,7 @@ public class SourceAdapter extends ArrayAdapter<SourceModel> {
     public View getView(int position, View convertView, ViewGroup parent){
         convertView=li.inflate(R.layout.interface_source_list,null);
 
-        if (sourceList.size() != 0) {
+        if (sourceList.size() != 0 && position < sourceList.size()) {
             TextView title = convertView.findViewById(R.id.title);
             TextView desc = convertView.findViewById(R.id.desc);
 

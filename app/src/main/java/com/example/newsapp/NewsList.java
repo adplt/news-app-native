@@ -97,8 +97,6 @@ public class NewsList extends AppCompatActivity {
             url = source.get(Storage.SOURCE__ID);
         }
 
-        Log.e("Source From", url);
-
         NewsListApi newsApi = new NewsListApi();
         List<NewsModel> news_list = newsApi.getNewsList("/everything", "&q=" + URLEncoder.encode(url) +"&from=" + dateFormat.format(date) + "&sortBy=publishedAt");
 

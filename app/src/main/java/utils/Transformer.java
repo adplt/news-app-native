@@ -35,9 +35,9 @@ public class Transformer {
 
     public List<SourceModel> filterCategory (List<SourceModel> sources){
         List<SourceModel> newSources = new ArrayList<>();
-        for (SourceModel source : sources) {
-            for (SourceModel newSource : newSources) {
-                if (!newSource.getCategory().toLowerCase().equalsIgnoreCase(source.getCategory().toLowerCase())) newSources.add(source);
+        for (int i=0; i < sources.size(); i++) {
+            for (int j=0; j < newSources.size(); j++) {
+                if (!newSources.get(i).getCategory().toLowerCase().equalsIgnoreCase(sources.get(i).getCategory().toLowerCase())) newSources.add(sources.get(i));
             }
         }
 
